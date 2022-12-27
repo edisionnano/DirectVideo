@@ -26,4 +26,9 @@ Copy your webcam's guid, mine is `usb-0000:03:00.0-8`, and use the command bello
 ```Javascript
 voice.addDirectVideoOutputSink("usb-0000:03:00.0-8");
 ```
-Let it run for 2-3 seconds and then type `.exit` to stop it.
+Let it run for 2-3 seconds and then type `.exit` to stop it.<br>
+You now have four text files on your working directory, frame.txt, y.txt, u.txt and v.txt. frame.txt contains information like the guid of your webcam or the YUV strides, Type which is always 1 on linux (1 = I420 as per Discord's commit on their Electron fork), timestamp is always 0 for some reason. y, u and v contain the YUV planes, y is luma, etc.<br>
+In case you need to use GDB to debug this try
+```console
+gdb node
+set exec-wrapper env 'LD_PRELOAD=$PWD/stub.so'
