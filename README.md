@@ -9,7 +9,7 @@ g++ -fPIC -c -o stub.o stub.cpp
 gcc -shared -o stub.so stub.o
 ```
 This will create the shared object stub.so which you can then preload to capture a frame.<br>
-In order to capture the frame you will also need a native module that can post such frames, Discord's Media Engine (AKA Voice Engine). The location of this module is `~/.config/discord(ptb,canary,development)/0.0.(version_number_here)/modules/discord_voice/discord_voice.node`. Simply copy the file to your working directory (next to stub.so) and then run node using:
+In order to capture the frame you will also need a native module that can post such frames, Discord's Media Engine (AKA Voice Engine). The location of this module is `~/.config/discord(ptb,canary,development)/0.0.(version_number_here)/modules/discord_voice/discord_voice.node`. Simply copy that file and libopenh264.so.6(it's on the same directory) to your working directory (next to stub.so) and then run node using:
 ```console
 LD_PRELOAD="$PWD/stub.so" node
 ```
@@ -26,4 +26,4 @@ Copy your webcam's guid, mine is `usb-0000:03:00.0-8`, and use the command bello
 ```Javascript
 voice.addDirectVideoOutputSink("usb-0000:03:00.0-8");
 ```
-Let it run for 2-3 seconds and type `.exit` to stop it.
+Let it run for 2-3 seconds and then type `.exit` to stop it.
