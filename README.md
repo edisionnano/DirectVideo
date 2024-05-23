@@ -34,7 +34,8 @@ gdb node
 set exec-wrapper env 'LD_PRELOAD=$PWD/stub.so'
 ```
 ### Decode the frame
-We can leverage libpng to convert the dumped frame into a file called frame.png. Simply compile the file png.cpp and run it at the same directory as the .txt files using ```console
+We can leverage libpng to convert the dumped frame into a file called frame.png. Simply compile the file png.cpp and run it at the same directory as the .txt files using
+```console
 g++ -o png png.cpp -lpng
 ./png
 ```
