@@ -32,3 +32,10 @@ In case you need to use GDB to debug this try
 ```console
 gdb node
 set exec-wrapper env 'LD_PRELOAD=$PWD/stub.so'
+```
+### Decode the frame
+We can leverage libpng to convert the dumped frame into a file called frame.png. Simply compile the file png.cpp and run it at the same directory as the .txt files using ```console
+g++ -o png png.cpp -lpng
+./png
+```
+It will then output a file called frame.png in the root of your PWD. png.cpp first converts I420 to raw RGB before converting it to png in case it is useful to get a raw frame.
